@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>音乐搜索下载</title>
+    <meta name="baidu_union_verify" content="7df556d84cf267202e6b1add6a6ca369">
+    <meta name="keywords" content="免费音乐,音乐解析,音乐搜索,破解音乐,高清mp3下载">
+    <meta name="description" content="免费的音乐搜索引擎!在线解析音乐,在线播放,下载,迅雷下载,免费音乐尽在此!">
+    <link rel="stylesheet" href="//static-1251818176.cos.ap-nanjing.myqcloud.com/static/css/layui.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//static-1251818176.cos.ap-nanjing.myqcloud.com/static/vue.js"></script>
+    <script src="//static-1251818176.cos.ap-nanjing.myqcloud.com/static/layui.all.js"></script>
+    <style>
+      /* 隐藏Vue代码，所有的组件设置成隐藏 */
+      [v-cloak]:not(body) {
+        display: none;
+      }
+        .yl{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .fl span{
+            margin-left: 5px;
+            margin-right: 5px;
+            color: #eb7350;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body style="background-color: #f2f2f2">
+<div class="layui-container">
+    <div class="layui-row">
+
+        <div class="layui-card" style="margin-top: 20px;">
+            <div class="layui-card-body">
+                <div class="layui-card-body">
+                    <div style="text-align: center"><h1>音乐搜索下载</h1></div>
+                    <br/>
+                    <div style="text-align: center;color: #ffb800">
+                        <h4>所有音乐都是从互联网收集播放链,本站不修改音乐文件,不提供存储和运营</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-card" style="margin-top: 20px;">
+            <div class="layui-card-body" style="text-align: center">
+<!--                <img style="width: 100px;" src="https://static-1251818176.cos.ap-nanjing.myqcloud.com/static/images/XIAZAI.png" />-->
+                <p>以后会推出app，敬请期待！</p>
+<!--                <a style="color: #eb7350" href="#">点我也可以下载(不支持微信,请在浏览器打开)</a>-->
+            </div>
+        </div>
+        <div class="layui-card" style="margin-top: 20px;">
+            <div class="layui-card-body">
+                <div class="layui-card-body fl">
+                    <span onclick="toclass('经典');">经典</span>
+                    <span onclick="toclass('流行');">流行</span>
+                    <span onclick="toclass('翻唱');">翻唱</span>
+                    <span onclick="toclass('欧美');">欧美</span>
+                    <span onclick="toclass('网络');">网络</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md12" id="kuang">
+
+            <div class="layui-card">
+                <div class="layui-card-header">搜索</div>
+                <div class="layui-card-body">
+                    <input type="text" id="keyword" required lay-verify="required" placeholder="请填 歌名/歌手名/专辑名 或者 音乐种类 任意一种" autocomplete="off" class="layui-input" style="width: 50%;display:inline">
+                    <button id="kbutton" class="layui-btn" onclick="getdata(1);">搜索一下</button>
+                </div>
+                <script>
+                    $("#keyword").width($("#kuang").width()-$("#kbutton").width()-100);
+                </script>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="layui-row" id="app">
+        <div class="layui-col-md12">
+
+            <div class="layui-card" style="margin-bottom: 40px;">
+                <div class="layui-card-header">搜索到:<span id="count">0</span>个</div>
+                <div class="layui-card-body">
+
+                    <table class="layui-table">
+
+                        <thead>
+                        <tr>
+                            <th width="70%">歌曲 [歌手]</th>
+                            <th width="30%">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="entry in list" v-cloak>
+                            <td>{{ entry.gqm +' ['+entry.gs+']'}}</td>
+                            <td>
+                                <a :href="'javascript:playm('+'\''+entry.id+'\''+','+'\''+entry.gqm+'\''+')'">播放/下载</a>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div style="text-align: center">
+                        <div id="fy"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!--    <div class="layui-row">-->
+<!--        <div class="layui-col-md12">-->
+
+<!--            <div class="layui-card" style="margin-bottom: 40px;">-->
+<!--                <div class="layui-card-header">友链</div>-->
+<!--                <div class="layui-card-body">-->
+<!--                    <span class="yl"><a href="http://dxmv8.com/"></a></span>-->
+<!--                    <span class="yl"><a href="http://fyxs8.com/"></a></span>-->
+
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+    <div class="layui-row" style="margin-bottom: 20px;">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <div class="layui-card-body fl">
+                <div style="text-align: center">
+                Copyright © 2021 All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+<script type="text/html" id="bfq">
+
+    <audio controls src='#src' autoplay="autoplay"></audio>
+    <p style="color: #eb7350">你可以复制下面的下载地址用下载软件下载</p>
+    <br/>
+    下载链接 :
+    <textarea readonly class="layui-textarea">{{ src }}</textarea>
+    <br/>
+    <p style="color: #eb7350">或者使用迅雷下载(你要安装迅雷软件才可以)</p>
+    <br/>
+    <a class="thunder-link" href="#href">迅雷下载</a>
+
+</script>
+<script>
+
+    var count = 0;
+    var pagesize = 30;
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            head: "",
+            list: []
+        }
+    });
+
+    function toclass(k){
+        $("#keyword").val(k)
+        getdata(1);
+    }
+
+    function getdata(page) {
+        keyword = $("#keyword").val()
+        if (keyword == "" || keyword == null) {
+            alert("请填写关键字");
+            return;
+        }
+        count = 0;
+        var loading = layer.msg('正在搜索', {icon: 16, shade: 0.3, time: 0});
+        $.post("/findmusic", {
+            "keyword": keyword,
+            "page": page,
+            "pagesize": pagesize,
+        }, function (e) {
+            app.head = e.head;
+            app.list = e.list;
+            count = parseInt(e.count);
+            $("#count").html(count)
+            layer.close(loading);
+            init(page);
+        });
+    }
+
+    function playm(id,name) {
+        var loading = layer.msg('正在加载请稍后', {icon: 16, shade: 0.3, time: 0});
+        $.post("/musicdetails", {
+            "id": id
+        }, function (e) {
+            if (e.wma != null) {
+                // location.href="/play?src="+e.wma;
+                // window.open("/play?src="+e.wma,'_blank');
+                open("/play?src=" + e.wma+"&name="+name);
+                layer.close(loading);
+            } else if (e.mp4 != null) {
+                open("/play?src=" + e.wma);
+                layer.close(loading);
+            }
+        });
+    }
+
+    function init(page) {
+        layui.use('laypage', function () {
+            var laypage = layui.laypage;
+
+            //执行一个laypage实例
+            laypage.render({
+                elem: 'fy',
+                count: count,
+                limit: pagesize,
+                curr: page,
+                jump: function (obj, first) {
+                    console.log(obj.curr);
+                    if (!first) {
+                        getdata(obj.curr);
+                    }
+                }
+
+            });
+        });
+    }
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script>
+
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?109607fa33d956dfffa542fb4e594413";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+    function open(url) {
+        let width = $(window).width();
+        let height = $(window).height();
+        layer.open({
+            type: 2,
+            area: [width * 0.9 + "px", height * 0.9 + "px"],
+            title: '极简播放器'
+            , content: url
+        });
+    }
+
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+</html>

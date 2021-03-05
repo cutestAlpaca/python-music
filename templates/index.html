@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>音乐搜索下载</title>
+    <meta name="keywords" content="免费音乐,音乐解析,音乐搜索,破解音乐,高清mp3下载">
+    <meta name="description" content="免费的音乐搜索引擎!在线解析音乐,在线播放,下载,迅雷下载,免费音乐尽在此!">
+    <link rel="stylesheet" href="//static-1251818176.cos.ap-nanjing.myqcloud.com/static/css/layui.css">
+    <script src="//open.thunderurl.com/thunder-link.js"></script>
+    <script src="//static-1251818176.cos.ap-nanjing.myqcloud.com/static/clipboard.min.js"></script>
+    <script src="//static-1251818176.cos.ap-nanjing.myqcloud.com/static/layui.all.js"></script>
+</head>
+<body>
+<!--<div class="layui-container">-->
+    <div class="layui-row" style="margin-top: 20px;">
+        <div class="layui-col-md12">
+
+            <div class="layui-card">
+                <!--<div class="layui-card-header">极简播放器</div>-->
+                <div class="layui-card-body">
+<!--                    <a href="/" style="color: #eb7350">返回搜索页</a>-->
+                    <div class="layui-card-header" style="text-align: center">
+                        <h2>{{ name }}</h2>
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <div style="text-align: center">
+                                <audio controls src='{{ src }}' autoplay="autoplay"></audio>
+                            </div>
+                        </div>
+                        <p style="color: #eb7350">你可以复制下面的下载地址用下载软件下载</p>
+                        <br/>
+                        下载链接 :
+                        <textarea id="bar" readonly class="layui-textarea">{{ src }}</textarea>
+                        <button class="btn layui-btn layui-btn-sm" style="float:right" data-clipboard-action="copy" data-clipboard-target="#bar">
+                            复制MP3链接
+                        </button>
+                        <br/>
+                        <p style="color: #eb7350">或者使用迅雷下载(你要安装迅雷软件才可以)</p>
+                        <br/>
+                        <a class="thunder-link" href="{{ src }}">迅雷下载</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!--</div>-->
+<script>
+    thunderLink();
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?109607fa33d956dfffa542fb4e594413";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+    var clipboard = new ClipboardJS('.btn');
+
+    clipboard.on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        e.clearSelection();
+        layer.msg('复制成功');
+    });
+
+    clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        layer.msg('复制失败');
+    });
+
+</script>
+</body>
+</html>

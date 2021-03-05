@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>音乐搜索下载</title>
+    <meta name="baidu_union_verify" content="7df556d84cf267202e6b1add6a6ca369">
+    <meta name="keywords" content="免费音乐,音乐解析,音乐搜索,破解音乐,高清mp3下载">
+    <meta name="description" content="免费的音乐搜索引擎!在线解析音乐,在线播放,下载,迅雷下载,免费音乐尽在此!">
+    <script src="//apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+<body style="background-color: hsl(0, 0%, 95%)">
+<div style="text-align: center">
+    <a href="/">
+        <h1>音乐搜索下载</h1>
+    </a>
+</div>
+<p>
+下载链接(15分钟内有效):
+</p>
+<textarea rows="10" style="width: 100%">{{ data['wma'] }}</textarea>
+<br/>
+<a href="{{data['wma']}}">点击播放</a>
+
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script>
+
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?109607fa33d956dfffa542fb4e594413";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+    function open(url) {
+        let width = $(window).width();
+        let height = $(window).height();
+        layer.open({
+            type: 2,
+            area: [width * 0.9 + "px", height * 0.9 + "px"],
+            title: '极简播放器'
+            , content: url
+        });
+    }
+
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+</body>
+</html>
